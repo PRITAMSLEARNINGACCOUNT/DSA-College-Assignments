@@ -1,23 +1,7 @@
 #include <stdio.h>
-int DEL(int arr[], int position, int *size)
-{
-    if (position > *size || position < 0)
-    {
-        printf("Hello World");
-        return 0;
-    }
-    else
-    {
-        for (int i = position; i <= *size - 1; i++)
-        {
-            arr[i] = arr[i + 1];
-        }
-        *size = *size - 1;
-        return 1;
-    }
-}
 void show(int arr[], int size)
 {
+    printf("I Am Doing Traversal Through The Array\n");
     printf("Now The Elements In The Array Are \n");
     for (int i = 0; i < size; i++)
     {
@@ -40,10 +24,6 @@ int main()
         {
             scanf("%d", &a[i]);
         }
-        printf("Enter The Position You Want To Delete??\n");
-        scanf("%d", &Position);
-        DEL(a, Position - 1, &Size);
-        // printf("%d\n", Size);
         show(a, Size);
     }
 
