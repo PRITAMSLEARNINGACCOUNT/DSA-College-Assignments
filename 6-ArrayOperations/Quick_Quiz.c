@@ -3,7 +3,7 @@ int Insert(int arr[], int position, int element, int size)
 {
     if (position > size || position < 0)
     {
-        printf("Invalid Position");
+        printf("Array Insertion Failed Because Of Invalid Position.\n");
         return 0;
     }
     else
@@ -44,8 +44,17 @@ int main()
         scanf("%d", &Position);
         printf("Enter The The Element You Want To Insert??\n");
         scanf("%d", &Element);
-        Size += Insert(a, Position, Element, Size);
-        show(a, Size);
+
+        if (!Insert(a, Position, Element, Size))
+        {
+            return 0;
+        }
+        else
+        {
+
+            Size += Insert(a, Position, Element, Size);
+            show(a, Size);
+        }
     }
 
     return 0;
