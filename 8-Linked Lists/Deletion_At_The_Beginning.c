@@ -28,9 +28,12 @@ int main()
 {
     int Temp = 100;
     int *temp = (int *)malloc(sizeof(int));
-    temp = &Temp;
+    // int *ptr = &Temp;
+    *temp = 50;
+    // temp = &Temp;
+    printf("%u\n", temp);
     free(temp);
-    printf("%d\n", *temp);
+    printf("%u\n", temp);
     // struct Linked_List *Head = (struct Linked_List *)malloc(sizeof(struct Linked_List));
     // struct Linked_List *First = (struct Linked_List *)malloc(sizeof(struct Linked_List));
     // struct Linked_List *Second = (struct Linked_List *)malloc(sizeof(struct Linked_List));
