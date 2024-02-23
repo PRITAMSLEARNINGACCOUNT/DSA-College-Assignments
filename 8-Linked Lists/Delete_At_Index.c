@@ -21,13 +21,47 @@ void Traversal(struct Linked_List *Copy)
         Copy = Copy->Node;
     }
 }
-void Delete(struct Linked_List *Copy, int index)
+void Delete_At_Index(struct Linked_List *Head_Pointer, int index)
 {
-    while (Copy != NULL)
+
+    struct Linked_List *Extra_Node = (struct Linked_List *)malloc(sizeof(struct Linked_List));
+    Extra_Node = Head_Pointer;
+    int i = 0;
+    // int count = 0;
+    while (Head_Pointer != NULL)
     {
-        printf("%d\n", Copy->Data);
-        Copy = Copy->Node;
+        // printf("HUE HUE HUE\n");
+        if (i == index)
+        {
+            // printf("Hello World\n");
+            // printf("Hello World\n");
+            // Extra_Node->Node = Head_Pointer->Node;
+            // Head_Pointer->Node = Extra_Node;
+            // count++;
+            Head_Pointer->Node = Extra_Node->Node;
+            free(Extra_Node);
+            break;
+        }
+        else
+        {
+            // printf("Hello World\n");
+            Head_Pointer = Extra_Node;
+            // printf("%d\n", Head_Pointer->Data);
+            Extra_Node = Extra_Node->Node;
+        }
+        i++;
     }
+    // if (count != 0)
+    // {
+    // }
+
+    // struct Linked_List Extra_Node;
+    // Extra_Node.Data = data;
+    // Extra_Node->Node = Copy->Node;
+    // Extra_Node.Node = Copy->Node;
+    // Copy->Node = Extra_Node;
+
+    // Traversal(Copy);
 }
 int main()
 {
@@ -52,17 +86,34 @@ int main()
     Fifth->Node = NULL;
     printf("Before Deletion\n");
     Traversal(Head);
-    printf("Enter The Position You Want To Delete??\n");
-    scanf("%d", &Position);
+    // printf("Enter The Position You Want To Delete??\n");
+    // scanf("%d", &Position);
+    Position = 3;
+    if ((Position - 1) < 0 || (Position - 1) > 6)
+    {
+
+        printf("Deletion Failed Because Of Invalid Index\n");
+        return 0;
+    }
+
     if ((Position - 1) == 0)
     {
-        Head = Head->Node;
+        printf("After Deletion\n");
+        // Head = Case_1(Head, 5144);
+        // Traversal(Head);
+        free(Head);
+        Traversal(First);
     }
     else
     {
-        Delete(Head, Position - 1);
+
+        printf("After Deletion\n");
+        Delete_At_Index(Head, Position - 1);
+        Traversal(Head);
+        // Case_2(Head, 507, index - 1);
+        // Traversal(Head);
     }
-    printf("After Deletion\n");
-    Traversal(Head);
+    // printf("After Deletion\n");
+    // Traversal(Head);
     return 0;
 }
