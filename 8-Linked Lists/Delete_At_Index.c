@@ -21,10 +21,17 @@ void Traversal(struct Linked_List *Copy)
         Copy = Copy->Node;
     }
 }
-
+void Delete(struct Linked_List *Copy, int index)
+{
+    while (Copy != NULL)
+    {
+        printf("%d\n", Copy->Data);
+        Copy = Copy->Node;
+    }
+}
 int main()
 {
-
+    int Position;
     struct Linked_List *Head = (struct Linked_List *)malloc(sizeof(struct Linked_List));
     struct Linked_List *First = (struct Linked_List *)malloc(sizeof(struct Linked_List));
     struct Linked_List *Second = (struct Linked_List *)malloc(sizeof(struct Linked_List));
@@ -45,7 +52,16 @@ int main()
     Fifth->Node = NULL;
     printf("Before Deletion\n");
     Traversal(Head);
-    Head = Head->Node;
+    printf("Enter The Position You Want To Delete??\n");
+    scanf("%d", &Position);
+    if ((Position - 1) == 0)
+    {
+        Head = Head->Node;
+    }
+    else
+    {
+        Delete(Head, Position - 1);
+    }
     printf("After Deletion\n");
     Traversal(Head);
     return 0;
