@@ -1,11 +1,3 @@
-/*
-Note:An Address Of Any Type Of Data Can not be Changed Without Being Pointer
-The Above Line Means We Just Can's Change Address Of An Already Declared Data.
-&Data=Address_Of_Data---->This Can Not Be Done.
-In Order To Do Something I Wanted In The Above Line Can Be Done By Doing Something Like Below:-
-Data_Type *Data;
-Data=Address_Of_Data;
-*/
 #include <stdio.h>
 #include <stdlib.h>
 struct Linked_List
@@ -15,53 +7,37 @@ struct Linked_List
 };
 void Traversal(struct Linked_List *Copy)
 {
-    while (Copy != NULL)
+    struct Linked_List *Extra_Node = (struct Linked_List *)malloc(sizeof(struct Linked_List));
+    Extra_Node = Copy;
+    do
     {
         printf("%d\n", Copy->Data);
         Copy = Copy->Node;
-    }
+    } while (Extra_Node != Copy);
 }
 void Delete_At_Index(struct Linked_List *Head_Pointer, int index)
 {
 
     struct Linked_List *Extra_Node = (struct Linked_List *)malloc(sizeof(struct Linked_List));
     Extra_Node = Head_Pointer;
+    struct Linked_List *Extra_Node_2 = (struct Linked_List *)malloc(sizeof(struct Linked_List));
+    Extra_Node_2 = Head_Pointer;
     int i = 0;
-    // int count = 0;
-    while (Extra_Node != NULL)
+    do
     {
-        // printf("HUE HUE HUE\n");
         if (i == index)
         {
-            // printf("Hello World\n");
-            // printf("Hello World\n");
-            // Extra_Node->Node = Head_Pointer->Node;
-            // Head_Pointer->Node = Extra_Node;
-            // count++;
             Head_Pointer->Node = Extra_Node->Node;
             free(Extra_Node);
             break;
         }
         else
         {
-            // printf("Hello World\n");
             Head_Pointer = Extra_Node;
-            // printf("%d\n", Head_Pointer->Data);
             Extra_Node = Extra_Node->Node;
         }
         i++;
-    }
-    // if (count != 0)
-    // {
-    // }
-
-    // struct Linked_List Extra_Node;
-    // Extra_Node.Data = data;
-    // Extra_Node->Node = Copy->Node;
-    // Extra_Node.Node = Copy->Node;
-    // Copy->Node = Extra_Node;
-
-    // Traversal(Copy);
+    } while (Extra_Node != Extra_Node_2);
 }
 int main()
 {
@@ -83,12 +59,11 @@ int main()
     Fourth->Data = 510;
     Fourth->Node = Fifth;
     Fifth->Data = 5401;
-    Fifth->Node = NULL;
+    Fifth->Node = Head;
     printf("Before Deletion\n");
     Traversal(Head);
     printf("Enter The Position You Want To Delete??\n");
     scanf("%d", &Position);
-    // Position = 3;
     if ((Position - 1) < 0 || (Position - 1) > 6)
     {
 
@@ -99,9 +74,8 @@ int main()
     if ((Position - 1) == 0)
     {
         printf("After Deletion\n");
-        // Head = Case_1(Head, 5144);
-        // Traversal(Head);
-        free(Head);
+        Head = Head->Node;
+        Fifth->Node = Head;
         Traversal(First);
     }
     else
@@ -110,10 +84,7 @@ int main()
         printf("After Deletion\n");
         Delete_At_Index(Head, Position - 1);
         Traversal(Head);
-        // Case_2(Head, 507, index - 1);
-        // Traversal(Head);
     }
-    // printf("After Deletion\n");
-    // Traversal(Head);
+
     return 0;
 }
