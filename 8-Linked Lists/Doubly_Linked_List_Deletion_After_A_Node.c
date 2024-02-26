@@ -19,14 +19,10 @@ void Delete(struct Linked_List *Copy)
 {
 
     struct Linked_List *Extra_Node = (struct Linked_List *)malloc(sizeof(struct Linked_List));
-    Extra_Node->Data = data;
-    Extra_Node->Next_Node = Copy->Next_Node;
-    Extra_Node->Prev_Node = Copy;
-    if (Copy->Next_Node != NULL)
-    {
-        Copy->Next_Node->Prev_Node = Extra_Node;
-    }
-    Copy->Next_Node = Extra_Node;
+    Extra_Node = Copy->Next_Node;
+    Copy->Next_Node = Copy->Next_Node->Next_Node;
+    Copy->Next_Node->Prev_Node = Copy;
+    free(Extra_Node);
 }
 int main()
 {
@@ -55,10 +51,11 @@ int main()
     Fifth->Prev_Node = Fourth;
     Fifth->Next_Node = NULL;
 
-    printf("Before Insertion\n");
+    printf("Before Deletion\n");
     Traversal(Head);
-    printf("After Insertion\n");
-    Delete(Fifth);
+    printf("After Deletion\n");
+    // Please Don't Give The Last Node As It Isn't Connected To Any Another Node
+    Delete(Third);
     Traversal(Head);
     return 0;
 }

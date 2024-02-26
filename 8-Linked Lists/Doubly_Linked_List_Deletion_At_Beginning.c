@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 struct Linked_List
 {
     int Data;
@@ -16,26 +15,7 @@ void Traversal(struct Linked_List *Copy)
         Copy = Copy->Next_Node;
     }
 }
-void Delete_At_End(struct Linked_List *Head_Pointer)
-{
 
-    struct Linked_List *Extra_Node = (struct Linked_List *)malloc(sizeof(struct Linked_List));
-    Extra_Node = Head_Pointer;
-    while (true)
-    {
-        if (Extra_Node->Next_Node == NULL)
-        {
-            Head_Pointer->Next_Node = NULL;
-            free(Extra_Node);
-            break;
-        }
-        else
-        {
-            Head_Pointer = Extra_Node;
-            Extra_Node = Extra_Node->Next_Node;
-        }
-    }
-}
 int main()
 {
 
@@ -65,9 +45,10 @@ int main()
     Fifth->Next_Node = NULL;
     printf("Before Deletion\n");
     Traversal(Head);
+    Head = Head->Next_Node;
+    Head->Next_Node->Prev_Node = NULL;
 
     printf("After Deletion\n");
-    Delete_At_End(Head);
     Traversal(Head);
     return 0;
 }
