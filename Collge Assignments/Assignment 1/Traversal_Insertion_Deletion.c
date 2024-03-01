@@ -60,7 +60,7 @@ int main()
         }
         printf("Enter The Position You Want To Insert??\n");
         scanf("%d", &Position);
-        printf("Enter The The Element You Want To Insert??\n");
+        printf("Enter The Element You Want To Insert??\n");
         scanf("%d", &Element);
         Size += Insert(a, Position, Element, Size);
         show(a, Size);
