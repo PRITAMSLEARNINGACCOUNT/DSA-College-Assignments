@@ -16,7 +16,6 @@ void Traversal(struct Linked_List *Copy)
     }
 }
 
-
 void Reverse_Traversal(struct Linked_List *Head)
 {
     while (Head != NULL)
@@ -26,6 +25,7 @@ void Reverse_Traversal(struct Linked_List *Head)
         Head = Head->Prev_Node;
     }
 }
+
 int main()
 {
     struct Linked_List *Head = (struct Linked_List *)malloc(sizeof(struct Linked_List));

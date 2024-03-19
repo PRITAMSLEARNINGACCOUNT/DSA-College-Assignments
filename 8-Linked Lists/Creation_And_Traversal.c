@@ -1,6 +1,6 @@
 #include <stdio.h>
 // #include <stdlib.h>
-struct Linked_List
+struct Linked_List 
 {
     int Data;
     struct Linked_List *Node;
@@ -9,7 +9,7 @@ void Traversal(struct Linked_List *Copy)
 {
     while (Copy != NULL)
     {
-        printf("%d\n", Copy->Data);
+        printf("%d\n", Copy->Data);   
         Copy = Copy->Node;
     }
 }
