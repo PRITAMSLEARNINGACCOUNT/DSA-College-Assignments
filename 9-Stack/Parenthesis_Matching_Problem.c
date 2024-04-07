@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 struct Stack
 {
     int Size;
@@ -82,7 +83,7 @@ void Parenthesis_Matching(char *Char_Ptr, struct Stack *Stack_Ptr)
 }
 int main()
 {
-    char *Hello = "(jhvdsajvdsjhvak(jsdlksajbdak)";
+    char *Hello = "jhvdsajvdsjhvakjsdlksajbdak";
     struct Stack *Parenthesis = (struct Stack *)malloc(sizeof(struct Stack));
     Parenthesis->Top_Index = -1;
     Parenthesis->Size = strlen(Hello) + 1;
