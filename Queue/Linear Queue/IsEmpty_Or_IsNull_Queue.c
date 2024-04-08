@@ -9,7 +9,7 @@ struct Queue
 };
 void IsEmpty(struct Queue *ptr)
 {
-    if (ptr->Front_Index == ptr->Front_Index || ptr->Rear_Index == -1)
+    if (ptr->Front_Index == ptr->Rear_Index || ptr->Rear_Index == -1)
     {
         printf("The Queue Is Empty\n");
     }
