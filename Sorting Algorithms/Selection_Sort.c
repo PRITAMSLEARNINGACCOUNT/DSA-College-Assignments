@@ -8,35 +8,24 @@ void PrintArray(int *Arr, int Length)
     }
     printf("\n");
 }
-void Insertion_Sort(int *Arr, int Length)
+void Selection_Sort(int *Arr, int Length)
 {
-    int Temp_Value = 0, j;
-    for (int i = 1; i <= Length - 1; i++)
+    int Minimum_Index = 0, j, Swap_Value;
+    for (int i = 0; i < Length - 1; i++)
     {
-        Temp_Value = Arr[i];
-        j = i - 1;
-        while (j >= 0 && Arr[j] > Temp_Value)
+        Minimum_Index = i;
+        for (j = i + 1; j <= Length - 1; j++)
         {
-            Arr[j + 1] = Arr[j];
-            j--;
+            if (Arr[j] < Arr[Minimum_Index])
+            {
+                Minimum_Index = j;
+            }
         }
-        Arr[j + 1] = Temp_Value;
+        Swap_Value = Arr[i];
+        Arr[i] = Arr[Minimum_Index];
+        Arr[Minimum_Index] = Swap_Value;
     }
 }
-
-// void Insertion_Sort(int *Arr, int Length)
-// {
-//     int Temp_Value = 0, j;
-//     for (int i = 1; i <= Length - 1; i++)
-//     {
-//         Temp_Value = Arr[i];
-//         for (j = i - 1; j >= 0 && Arr[j] > Temp_Value; j--)
-//         {
-//             Arr[j + 1] = Arr[j];
-//         }
-//         Arr[j + 1] = Temp_Value;
-//     }
-// }
 
 int main()
 {
@@ -53,7 +42,7 @@ int main()
     printf("\n");
     printf("Before Sorting\n");
     PrintArray(Array, Length);
-    Insertion_Sort(Array, Length);
+    Selection_Sort(Array, Length);
     printf("After Sorting\n");
     PrintArray(Array, Length);
     return 0;
