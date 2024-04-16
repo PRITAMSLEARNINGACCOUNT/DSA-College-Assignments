@@ -11,7 +11,7 @@ void PrintArray(int *Arr, int Length)
 void Merge(int *Array, int Low, int Mid, int High)
 {
     int *Extra_Array = (int *)malloc(((High - Low) + 1) * sizeof(int));
-    int k = 0;
+    int k = Low;
     int L = Low;
     int i = Mid + 1;
     int j = High;
@@ -44,9 +44,7 @@ void Merge(int *Array, int Low, int Mid, int High)
     }
     for (i = Low; i <= High; i++)
     {
-        j = 0;
-        Array[i] = Extra_Array[j];
-        j++;
+        Array[i] = Extra_Array[i];
     }
 }
 void Merge_Sort(int *Arr, int Low, int High)
