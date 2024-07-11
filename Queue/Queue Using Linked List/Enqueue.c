@@ -53,6 +53,9 @@ int main()
     Rear_Index = NULL;
     Enqueue(&Front_Index, &Rear_Index, 200);
     Enqueue(&Front_Index, &Rear_Index, 56470);
+    Enqueue(&Front_Index, &Rear_Index, 56470);
+    Enqueue(&Front_Index, &Rear_Index, 56470);
+    
     Traversal(Front_Index);
     return 0;
 }
